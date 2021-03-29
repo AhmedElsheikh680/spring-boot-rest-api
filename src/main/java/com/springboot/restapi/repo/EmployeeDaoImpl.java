@@ -31,4 +31,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
         List<Employee> employees = query.getResultList();
         return employees;
     }
+
+    @Override
+    public Employee findById(int id) {
+        Session currentSession = entityManager.unwrap(Session.class);
+       Employee employee =  currentSession.get(Employee.class, id);
+       return employee;
+    }
 }
