@@ -1,6 +1,7 @@
 package com.springboot.restapi.repo;
 
 import com.springboot.restapi.model.Employee;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,16 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class EmployeeDaoImpl implements EmployeeDao{
 
-    private EntityManager entityManager;
-
-    @Autowired
-    public EmployeeDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-
-    }
+    private final EntityManager entityManager;
+//
+//    @Autowired
+//    public EmployeeDaoImpl(EntityManager entityManager) {
+//        this.entityManager = entityManager;
+//
+//    }
 
     @Override
     @Transactional
