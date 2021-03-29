@@ -1,12 +1,10 @@
-package com.springboot.restapi.repo;
+package com.springboot.restapi.service;
 
 import com.springboot.restapi.model.Employee;
 
 import java.util.List;
 
-public interface EmployeeDao {
+public interface EmployeeService {
 
     public List<Employee> findAll();
-
-
 }

@@ -2,6 +2,7 @@ package com.springboot.restapi.controller;
 
 import com.springboot.restapi.model.Employee;
 import com.springboot.restapi.repo.EmployeeDao;
+import com.springboot.restapi.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,10 @@ import java.util.List;
 public class EmployeeRestController {
 
 //    @Autowired
-    private final EmployeeDao employeeDao;
+    private final EmployeeService employeeService;
 
     @GetMapping("/employees")
     public List<Employee> findAll(){
-        return employeeDao.findAll();
+        return employeeService.findAll();
     }
 }
