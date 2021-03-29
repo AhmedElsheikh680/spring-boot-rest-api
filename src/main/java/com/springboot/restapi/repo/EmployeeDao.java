@@ -10,5 +10,6 @@ public interface EmployeeDao {
 
     public Employee findById(int id);
 
+    // Save Or Update
     public void save(Employee employee);
 }
