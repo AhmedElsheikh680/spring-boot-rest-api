@@ -38,4 +38,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
        Employee employee =  currentSession.get(Employee.class, id);
        return employee;
     }
+
+    @Override
+    public void save(Employee employee) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.saveOrUpdate(employee);
+    }
 }
