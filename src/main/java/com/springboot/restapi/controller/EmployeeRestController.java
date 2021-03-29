@@ -1,5 +1,6 @@
 package com.springboot.restapi.controller;
 
+import com.springboot.restapi.exception.EmployeeNotFoundException;
 import com.springboot.restapi.model.Employee;
 import com.springboot.restapi.repo.EmployeeDao;
 import com.springboot.restapi.service.EmployeeService;
@@ -24,7 +25,12 @@ public class EmployeeRestController {
 
     @GetMapping("/employees/{id}")
     public Employee findById(@PathVariable int id){
-        return employeeService.findById(id);
+        Employee employee = employeeService.findById(id);
+        if(employee == null){
+            throw new EmployeeNotFoundException("Employee Id Not Found");
+        }
+        return employee;
+
     }
 
     @PostMapping("/employees")
@@ -42,6 +48,10 @@ public class EmployeeRestController {
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id){
+        Employee employee = employeeService.findById(id);
+        if(employee == null){
+            throw  new EmployeeNotFoundException("Employee Id Not Found - "+ id);
+        }
         employeeService.deleteById(id);
         return "Deleted Employee Id - " + id;
     }
