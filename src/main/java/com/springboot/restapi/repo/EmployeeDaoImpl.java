@@ -4,7 +4,6 @@ import com.springboot.restapi.model.Employee;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -43,5 +42,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
     public void save(Employee employee) {
         Session currentSession = entityManager.unwrap(Session.class);
         currentSession.saveOrUpdate(employee);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("delete from Employee where id=:employeeId");
+        query.setParameter("employeeId", id);
+        query.executeUpdate();
     }
 }

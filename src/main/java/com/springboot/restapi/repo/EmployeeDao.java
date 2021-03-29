@@ -12,4 +12,6 @@ public interface EmployeeDao {
 
     // Save Or Update
     public void save(Employee employee);
+
+    public void deleteById(int id);
 }
